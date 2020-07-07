@@ -29,9 +29,19 @@ function setTime() {
 var questions  = [{
 
     question1: "1. Where was the jersey shore filmed?",
-    Choices:[]
-    correct: 0
-}]
+    Choices:[.btn1("LBI, NJ"), btn2("Seaside Heights, NJ"), .btn("Cape May, NJ")],
+    correct: 2
+}, {
+question2: "1. Jenny's nick-name on the show was?",
+Choices:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
+correct: 3
+}
+, {
+  question2: "1. Jenny's nick-name on the show was?",
+  Choices:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
+  correct: 3
+  }
+  
 
 //click start button
 

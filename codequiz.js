@@ -1,14 +1,14 @@
-// do we link botsrap?
+// do we link bootsrap?
 
 //variables
 
-var score
+var score = 0;
 
 //timer
 var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 
-var secondsLeft = 10;
+var secondsLeft = 100;
 
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -19,31 +19,33 @@ function setTime() {
       clearInterval(timerInterval);
       sendMessage();
     }
-  }, 1000);
+  }, 10000);
 
 
 
 //objects
 
 //obejcts and folder
-var questions  = [{
+var questionAndAnswer  = [{
 
-    question1: "1. Where was the jersey shore filmed?",
-    Choices:[.btn1("LBI, NJ"), btn2("Seaside Heights, NJ"), .btn("Cape May, NJ")],
+    question: "1. Where was the jersey shore filmed?",
+    options:[.btn1("LBI, NJ"), btn2("Seaside Heights, NJ"), .btn("Cape May, NJ")],
     correct: 2
 }, {
-question2: "1. Jenny's nick-name on the show was?",
-Choices:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
+question: "2. Jenny's nick-name on the show was?",
+options:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
 correct: 3
 }
 , {
-  question2: "1. Jenny's nick-name on the show was?",
-  Choices:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
+  question: "3. Where did the cast work while in Seaside Heights?",
+  options:[.btn1("Bakery"), btn2("T-shirt Shop"), .btn3("Pizzeria")],
   correct: 3
   }
-  
+]
 
+  
 //click start button
+
 
 //the timer starts and score counter
 

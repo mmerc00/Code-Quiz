@@ -2,9 +2,36 @@
 
 //variables
 
-//score counter
+var score
+
 //timer
+var timeEl = document.querySelector(".time");
+var mainEl = document.getElementById("main");
+
+var secondsLeft = 10;
+
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+  }, 1000);
+
+
+
 //objects
+
+//obejcts and folder
+var questions  = [{
+
+    question1: "1. Where was the jersey shore filmed?",
+    Choices:[]
+    correct: 0
+}]
 
 //click start button
 
@@ -23,3 +50,21 @@
 //save score
 
 //return to start
+
+
+
+
+
+
+
+function sendMessage() {
+    timeEl.textContent = " ";
+  
+    var imgEl = document.createElement("img");
+  
+    imgEl.setAttribute("src", "images/image_1.jpg");
+    mainEl.appendChild(imgEl);
+  }
+  
+  setTime();
+  

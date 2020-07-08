@@ -1,51 +1,79 @@
-// do we link bootsrap?
-
 //variables
-
+//obejcts and folder
+var questionAndAnswer = [
+  {
+    question: "1. Where was the jersey shore filmed?",
+    options: ["LBI, NJ", "Seaside Heights, NJ", "Cape May, NJ"],
+    correct: 1,
+  },
+  {
+    question: "2. Jenny's nick-name on the show was?",
+    options: ["Jmoney", "J420", "Jwow"],
+    correct: 2,
+  },
+  {
+    question: "3. Where did the cast work while in Seaside Heights?",
+    options: ["Bakery", "T-shirt Shop", "Pizzeria"],
+    correct: 1,
+  },
+];
+var qIndex = 0;
+var secondsLeft = 100;
 var score = 0;
+var timerInterval;
+
+//console.log(questionAndAnswer[0].options);
+
+// console.log(questionAndAnswer[1].question);
+// console.log(questionAndAnswer[1].options);
+
+// console.log(questionAndAnswer[2].question);
+// console.log(questionAndAnswer[2].options);
+
+// for (var i = 0; i < questionAndAnswer.length; i++) {
+//   console.log(questionAndAnswer[i].question);
+//   console.log(questionAndAnswer[i].options);
+//   for (var k = 0; k < questionAndAnswer[i].options.length; k++) {
+//     console.log(questionAndAnswer[i].options[k]);
+//   }
+//   console.log(questionAndAnswer[i].correct);
+// }
 
 //timer
-var timeEl = document.querySelector(".time");
-var mainEl = document.getElementById("main");
+var timeEl = document.querySelector(".timer");
 
-var secondsLeft = 100;
+var mainEl = document.getElementById("main");
+var questionsEl = document.getElementById("questions");
+
+displayQuestion();
+
+function displayQuestion() {
+  questionsEl.innerHTML = "";
+
+  var question = document.createElement("h1");
+  question.textContent = questionAndAnswer[qIndex].question;
+
+  questionsEl.appendChild(question);
+}
 
 function setTime() {
-  var timerInterval = setInterval(function () {
+  clearInterval(timerInterval);
+
+  timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+    timeEl.textContent = secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       clearInterval(timerInterval);
-      sendMessage();
     }
-  }, 10000);
+  }, 1 * 1000);
+}
 
-
+//if statements
 
 //objects
 
-//obejcts and folder
-var questionAndAnswer  = [{
-
-    question: "1. Where was the jersey shore filmed?",
-    options:[.btn1("LBI, NJ"), btn2("Seaside Heights, NJ"), .btn("Cape May, NJ")],
-    correct: 2
-}, {
-question: "2. Jenny's nick-name on the show was?",
-options:[.btn1("Jmoney"), btn2("J420"), .btn3("Jwow")],
-correct: 3
-}
-, {
-  question: "3. Where did the cast work while in Seaside Heights?",
-  options:[.btn1("Bakery"), btn2("T-shirt Shop"), .btn3("Pizzeria")],
-  correct: 3
-  }
-]
-
-  
 //click start button
-
 
 //the timer starts and score counter
 
@@ -63,20 +91,13 @@ correct: 3
 
 //return to start
 
-
-
-
-
-
-
 function sendMessage() {
-    timeEl.textContent = " ";
-  
-    var imgEl = document.createElement("img");
-  
-    imgEl.setAttribute("src", "images/image_1.jpg");
-    mainEl.appendChild(imgEl);
-  }
-  
-  setTime();
-  
+  timeEl.textContent = " ";
+
+  var imgEl = document.createElement("img");
+
+  // imgEl.setAttribute("src", "images/image_1.jpg");
+  mainEl.appendChild(imgEl);
+}
+
+setTime();

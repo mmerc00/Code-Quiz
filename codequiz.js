@@ -46,9 +46,9 @@ displayQuestions;
 // console.log(displayQuestions);
 //Array of Answers
 
-var answers = ["Seaside Heights", "Jwow", "T-shirt Shop"];
-//User interactions
-//When we click on Start, timer countdown starts
+var answers = []; //"Seaside Heights", "Jwow", "T-shirt Shop"];
+//User interaction
+//When start is clicked timer countdown begins
 startEl.addEventListener("click", function () {
   startEl.style.display = "none";
   var myInterval = setInterval(function () {

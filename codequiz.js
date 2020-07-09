@@ -2,88 +2,12 @@
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector("#start");
 
+var questionDisplay = document.querySelector("#question");
 var optionA = document.querySelector("#optionA");
 var optionB = document.querySelector("#optionB");
 var optionC = document.querySelector("#optionC");
 var optionD = document.querySelector("#optionD");
 //Array of Options
-
-function displayQuestion() {
-  question.textContent = quiz[questionNumber]["q" + questionNumber];
-  optionA.value = "";
-  optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
-  optionB.value = "";
-  optionB.innerHTML = quiz[questionNumber]["b" + questionNumber];
-  optionC.value = "";
-  optionC.innerHTML = quiz[questionNumber]["c" + questionNumber];
-  optionD.value = "";
-  optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
-}
-
-function checkAnswerA() {
-  var questionData = quiz[questionNumber]["a" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-    // displayCorrectMessage();
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-    //displayWrongMessage();
-  }
-  //displayQuestion();
-}
-function checkAnswerB() {
-  var questionData = quiz[questionNumber]["b" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point!", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-    // displayCorrectMessage();
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-    // displayWrongMessage();
-  }
-  //displayQuestion();
-}
-function checkAnswerC() {
-  var questionData = quiz[questionNumber]["c" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-    //displayCorrectMessage();
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-    // displayWrongMessage();
-  }
-  // displayQuestion();
-}
-function checkAnswerD() {
-  var questionData = quiz[questionNumber]["d" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("we are here!", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-    //displayCorrectMessage();
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-    // displayWrongMessage();
-  }
-  //displayQuestion();
-}
-optionA.addEventListener("click", checkAnswerA);
-optionB.addEventListener("click", checkAnswerB);
-optionC.addEventListener("click", checkAnswerC);
-optionD.addEventListener("click", checkAnswerD);
 
 //Arrays
 var options = [optionA, optionB, optionC, optionD];
@@ -122,7 +46,7 @@ var quiz = [
 var questionNumber = 0;
 //declairing question number
 
-//When we click on Start, timer countdown starts
+// timer triggered by click function
 startEl.addEventListener("click", function () {
   startEl.style.display = "none";
   var myInterval = setInterval(function () {
@@ -131,7 +55,76 @@ startEl.addEventListener("click", function () {
     secondsLeft--;
     if (secondsLeft <= 0) {
       clearInterval(myInterval);
-      //   displayQuestions;
     }
   }, 1000);
 });
+//this function displays the question
+function displayQuestion() {
+  question.textContent = quiz[questionNumber]["q" + questionNumber];
+  optionA.value = "";
+  optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
+  optionB.value = "";
+  optionB.innerHTML = quiz[questionNumber]["b" + questionNumber];
+  optionC.value = "";
+  optionC.innerHTML = quiz[questionNumber]["c" + questionNumber];
+  optionD.value = "";
+  optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
+}
+
+function checkAnswerA() {
+  var questionData = quiz[questionNumber]["a" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("check point", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    // displayCorrectMessage();
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+    //displayWrongMessage();
+  }
+}
+//thesefunctiom matches the question to answer and connects with an if statement that connects with the timer and score count
+function checkAnswerB() {
+  var questionData = quiz[questionNumber]["b" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("check point!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+  }
+}
+function checkAnswerC() {
+  var questionData = quiz[questionNumber]["c" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("check point", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+  }
+}
+function checkAnswerD() {
+  var questionData = quiz[questionNumber]["d" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+  }
+}
+
+//this part is still under construction
+optionA.addEventListener("click", checkAnswerA);
+optionB.addEventListener("click", checkAnswerB);
+optionC.addEventListener("click", checkAnswerC);
+optionD.addEventListener("click", checkAnswerD);

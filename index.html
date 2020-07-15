@@ -11,28 +11,24 @@
       <h1>Jersey Shore Quiz</h1>
       <!-- <p class="question"> -->
 
-      <span class="timer"></span>
+      <h2>Time: <span class="timer">60</span></h2>
     </div>
-    <div class="container row">
-      <div class="column">
-        <div>      <!-- buttons -->
-           <h2 id = "question"></h2> 
+    <div class="container">
+      <div class="row">
+        <div>
+          <!-- buttons -->
+          <h2 id="question"></h2>
           <button type="button" class="btn" id="start">START</button>
-          <hr>
-          <button type="button" class="btn" id="optionA"></button>
-         <hr>
-          <button type="button" class="btn" id="optionB"></button>
-         <hr>
-          <button type="button" class="btn" id="optionC"></button>
-         <hr>
-          <button type="button" class="btn" id="optionD"></button> 
+          <hr />
 
+          <div id="choices"></div>
         </div>
       </div>
 
-        <button type="button" id="button">User answer to populate</button>
-        <div id="results"></div>
-      </div> 
-    </div><!-- this js script is down here so page can load buttons first-->
+      <button type="button" id="button">User answer to populate</button>
+      <div id="results"></div>
+    </div>
+    <!-- this js script is down here so page can load buttons first-->
     <script src="codequiz.js"></script>
   </body>
+</html>

@@ -2,129 +2,144 @@
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector("#start");
 
+var answerDiv = document.getElementById("choices");
 var questionDisplay = document.querySelector("#question");
-var optionA = document.querySelector("#optionA");
-var optionB = document.querySelector("#optionB");
-var optionC = document.querySelector("#optionC");
-var optionD = document.querySelector("#optionD");
+// var optionA = document.querySelector("#optionA");
+// var optionB = document.querySelector("#optionB");
+// var optionC = document.querySelector("#optionC");
+// var optionD = document.querySelector("#optionD");
 //Array of Options
 
 //Arrays
-var options = [optionA, optionB, optionC, optionD];
-var question = document.querySelector("#question");
+// var options = [optionA, optionB, optionC, optionD];
+var questionEl = document.querySelector("#question");
 var secondsLeft = 60;
 var score = 0;
-var answers = ["Seaside Heights", "Jwow", "T-shirt shop"];
+// var answers = [, , ];
+var myInterval;
 
 var quiz = [
   // Q1
   {
-    q1: "Where in NJ was the Jersey Shore filmed?",
-    a1: "LBI",
-    b1: "Seaside Heights",
-    c1: "Cape May",
-    d1: "Point Pleasant",
+    question: "Where in NJ was the Jersey Shore filmed?",
+    answers: ["LBI", "Seaside Heights", "Cape May", "Point Pleasant"],
+    correct: "Seaside Heights",
   },
   //  Q2
   {
-    q2: "Jenny's name on the show was",
-    a2: "Jwow",
-    b2: "Jmoney",
-    c2: "Jshore",
-    d2: "have no idea",
+    question: "Jenny's name on the show was",
+    answers: ["Jwow", "Jmoney", "Jshore", "have no idea"],
+    correct: "Jwow",
   },
   {
     // Q3
-    q3: "Where did the cast work while filiming in NJ",
-    a3: "Bakery",
-    b3: "T-shirt shop",
-    c3: "Pizzera",
-    d3: "Tatoo shop",
+    question: "Where did the cast work while filiming in NJ",
+    answers: ["Bakery", "T-shirt shop", "Pizzera", "Tatoo shop"],
+    correct: "T-shirt shop",
   },
 ];
 
-var questionNumber = 0;
 //declairing question number
+var questionNumber = 0;
 
 // timer triggered by click function
 startEl.addEventListener("click", function () {
+  displayQuestion();
   startEl.style.display = "none";
-  var myInterval = setInterval(function () {
+  myInterval = setInterval(function () {
     timerEl.textContent = secondsLeft;
-    displayQuestion();
     secondsLeft--;
     if (secondsLeft <= 0) {
       clearInterval(myInterval);
     }
   }, 1000);
 });
+
 //this function displays the question
 function displayQuestion() {
-  question.textContent = quiz[questionNumber]["q" + questionNumber];
-  optionA.value = "";
-  optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
-  optionB.value = "";
-  optionB.innerHTML = quiz[questionNumber]["b" + questionNumber];
-  optionC.value = "";
-  optionC.innerHTML = quiz[questionNumber]["c" + questionNumber];
-  optionD.value = "";
-  optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
-}
+  var question = quiz[questionNumber];
+  answerDiv.innerHTML = "";
 
-function checkAnswerA() {
-  var questionData = quiz[questionNumber]["a" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-    // displayCorrectMessage();
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-    //displayWrongMessage();
-  }
-}
-//thesefunctiom matches the question to answer and connects with an if statement that connects with the timer and score count
-function checkAnswerB() {
-  var questionData = quiz[questionNumber]["b" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point!", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-  }
-}
-function checkAnswerC() {
-  var questionData = quiz[questionNumber]["c" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("check point", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
-  }
-}
-function checkAnswerD() {
-  var questionData = quiz[questionNumber]["d" + questionNumber];
-  var correctAnswer = answers[questionNumber];
-  console.log("we are here!", questionData, correctAnswer);
-  if (questionData === correctAnswer) {
-    score++;
-    questionNumber++;
-  } else {
-    questionNumber++;
-    secondsLeft -= 10;
+  questionEl.textContent = question.question;
+  for (var i = 0; i < question.answers.length; i++) {
+    var answer = question.answers[i];
+
+    var button = document.createElement("button");
+    button.textContent = answer;
+    button.addEventListener("click", checkAnswer);
+
+    answerDiv.appendChild(button);
   }
 }
 
-//this part is still under construction
-optionA.addEventListener("click", checkAnswerA);
-optionB.addEventListener("click", checkAnswerB);
-optionC.addEventListener("click", checkAnswerC);
-optionD.addEventListener("click", checkAnswerD);
+function checkAnswer() {
+  var choice = this.textContent;
+  var correct = quiz[questionNumber].correct;
+  if (choice === correct) {
+    score++;
+  }
+  questionNumber++;
+  if (questionNumber < quiz.length) {
+    displayQuestion();
+  } else {
+    alert(score);
+  }
+}
+
+// function checkAnswerA() {
+//   var questionData = quiz[questionNumber]["a" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   console.log("check point", questionData, correctAnswer);
+//   if (questionData === correctAnswer) {
+//     score++;
+//     questionNumber++;
+//     // displayCorrectMessage();
+//   } else {
+//     questionNumber++;
+//     secondsLeft -= 10;
+//     //displayWrongMessage();
+//   }
+// }
+// //thesefunctiom matches the question to answer and connects with an if statement that connects with the timer and score count
+// function checkAnswerB() {
+//   var questionData = quiz[questionNumber]["b" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   console.log("check point!", questionData, correctAnswer);
+//   if (questionData === correctAnswer) {
+//     score++;
+//     questionNumber++;
+//   } else {
+//     questionNumber++;
+//     secondsLeft -= 10;
+//   }
+// }
+// function checkAnswerC() {
+//   var questionData = quiz[questionNumber]["c" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   console.log("check point", questionData, correctAnswer);
+//   if (questionData === correctAnswer) {
+//     score++;
+//     questionNumber++;
+//   } else {
+//     questionNumber++;
+//     secondsLeft -= 10;
+//   }
+// }
+// function checkAnswerD() {
+//   var questionData = quiz[questionNumber]["d" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   console.log("we are here!", questionData, correctAnswer);
+//   if (questionData === correctAnswer) {
+//     score++;
+//     questionNumber++;
+//   } else {
+//     questionNumber++;
+//     secondsLeft -= 10;
+//   }
+// }
+
+// //this part is still under construction
+// optionA.addEventListener("click", checkAnswerA);
+// optionB.addEventListener("click", checkAnswerB);
+// optionC.addEventListener("click", checkAnswerC);
+// optionD.addEventListener("click", checkAnswerD);

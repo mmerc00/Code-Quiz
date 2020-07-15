@@ -8,7 +8,7 @@ var questionDisplay = document.querySelector("#question");
 // var optionB = document.querySelector("#optionB");
 // var optionC = document.querySelector("#optionC");
 // var optionD = document.querySelector("#optionD");
-//Array of Options
+//condensed all my options into anto a nested array
 
 //Arrays
 // var options = [optionA, optionB, optionC, optionD];

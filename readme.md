@@ -1,5 +1,6 @@
 <img src="assets/Jersey Shore Quiz.png" alt="screenshot of quiz in action">
-## Jersey Shore Quiz 
+
+# Jersey Shore Quiz 
 
 # License 
 N/A

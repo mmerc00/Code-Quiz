@@ -1,13 +1,15 @@
-<img src="assets/Jersey Shore Quiz.png" alt="screenshot of quiz in action">
+<img src="assets/jerseyshorequiz.png" alt="screenshot of quiz in action">
 
-# Jersey Shore Quiz 
+# Jersey Shore Quiz
+
 Try it yourself at: https://mmerc00.github.io/Code-Quiz/
 
+# License
 
-# License 
 N/A
 
 # Technologies Used
+
 --- HTML
 -- -Javascript (vanilla)
 --- CSS

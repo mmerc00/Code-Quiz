@@ -1,6 +1,10 @@
 //declaring variables
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector("#start");
+var resultsPage = document.getElementById("resultsPage");
+var scoreEl = document.getElementById("score");
+var highscoreEl = document.getElementById("highscore");
+var restartEl = document.getElementById("restart");
 
 var answerDiv = document.getElementById("choices");
 var questionDisplay = document.querySelector("#question");
@@ -13,10 +17,18 @@ var questionDisplay = document.querySelector("#question");
 //Arrays
 // var options = [optionA, optionB, optionC, optionD];
 var questionEl = document.querySelector("#question");
-var secondsLeft = 60;
-var score = 0;
-// var answers = [, , ];
 var myInterval;
+var secondsLeft = 60;
+var questionNumber = 0;
+var score = 0;
+var highscore = localStorage.getItem("highscore");
+if (highscore === null) {
+  highscore = 0;
+} else {
+  highscore = parseInt(highscore);
+}
+
+// var answers = [, , ];
 
 var quiz = [
   // Q1
@@ -40,12 +52,17 @@ var quiz = [
 ];
 
 //declairing question number
-var questionNumber = 0;
 
 // timer triggered by click function
-startEl.addEventListener("click", function () {
-  displayQuestion();
+startEl.addEventListener("click", startGame);
+
+function startGame() {
   startEl.style.display = "none";
+  displayQuestion();
+  startTimer();
+}
+
+function startTimer() {
   myInterval = setInterval(function () {
     timerEl.textContent = secondsLeft;
     secondsLeft--;
@@ -53,7 +70,7 @@ startEl.addEventListener("click", function () {
       clearInterval(myInterval);
     }
   }, 1000);
-});
+}
 
 //this function displays the question
 function displayQuestion() {
@@ -77,14 +94,53 @@ function checkAnswer() {
   var correct = quiz[questionNumber].correct;
   if (choice === correct) {
     score++;
+  } else {
+    secondsLeft -= 10;
   }
   questionNumber++;
   if (questionNumber < quiz.length) {
     displayQuestion();
+    //secondsLeft -= 10;
   } else {
-    alert(score);
+    showScore();
   }
 }
+
+//get and set local storage for score
+
+function showScore() {
+  resultsPage.style.display = "block";
+
+  if (score > highscore) {
+    highscore = score;
+    localStorage.setItem("highscore", highscore);
+  }
+
+  scoreEl.textContent = score;
+  highscoreEl.textContent = highscore;
+  clearInterval(myInterval);
+}
+
+// function refreshPage() {
+//   if (btn.click) {
+//     location.reload();
+//   }
+// }
+
+//restart quiz
+restartEl.onclick = function () {
+  location.reload();
+};
+
+//  score = JSON.parse(showScore);
+//  console.log(score);
+//  } localStorage.setItem("score", stringify)??
+
+// function DisplayScore(score) {
+//   if (questionNumber < quiz.length) return score.innerhtml(results);
+// }
+
+//timer
 
 // function checkAnswerA() {
 //   var questionData = quiz[questionNumber]["a" + questionNumber];

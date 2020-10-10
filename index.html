@@ -22,7 +22,21 @@
           <div style="text-align: center;" id="choices"></div>
         </div>
       </div>
-      <div id="results"></div>
+      <div id="resultsPage" style="display: none;">
+        <div>Highscore: <span id="highscore"></span></div>
+        <div>Your Score: <span id="score"></span></div>
+        <button
+          type="button"
+          class="btn"
+          id="restart"
+          input
+          type="reset"
+          value="Refresh Webpage."
+          onclick="refreshPage()"
+        >
+          RESTART
+        </button>
+      </div>
     </div>
     <!-- this js script is down here so page can load buttons first-->
     <script src="codequiz.js"></script>

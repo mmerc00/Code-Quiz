@@ -5,6 +5,17 @@
 #start {
   text-align: center;
 }
+#question,
+#score,
+#title,
+#highscore,
+#resultsPage {
+  color: white;
+}
+
 #image {
   background-image: url("https://deadline.com/wp-content/uploads/2020/06/jsfv_buckleup-1.jpg");
+  background-repeat: no-repeat;
+
+  background-size: 1500px 800px;
 }

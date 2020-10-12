@@ -6,11 +6,14 @@
   text-align: center;
 }
 #question,
-#score,
-#title,
-#highscore,
+#title {
+  color: white;
+  text-align: center;
+}
 #resultsPage {
   color: white;
+  text-align: center;
+  padding-top: 10%;
 }
 
 #image {

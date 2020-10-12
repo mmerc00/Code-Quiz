@@ -13,7 +13,8 @@
 #resultsPage {
   color: white;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 7%;
+  font-size: 50px;
 }
 
 #image {
